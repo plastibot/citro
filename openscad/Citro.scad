@@ -14,7 +14,7 @@ servo5_y     = servo5_w + servo_tol*8; //~23
 // 8, 4.6, length =10 
 
 
-Citro6_20();
+//Citro6_20();
 
 //color("red")
 //translate([0,0,2])
