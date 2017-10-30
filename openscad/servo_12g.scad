@@ -1,39 +1,13 @@
-//servo_12g();
+include <config.scad>
 
-//use<hub_mount.scad>
-//use<MCAD/nuts_and_bolts.scad>
+
+servo_12g();
+
+
 $fn = 24;
 //x,y,z => l,w,h
 
-tap_r = 0.85;
-hole_r = 1.0;
 
-servo_l         = 12;  // was 12
-servo_w         = 24;  // was 23
-body_h          = 20.80;
-
-servo_h         = 27; //not used in code was 27
-
-wing_w          = 4.5;
-wing_h          = 2.33;
-wing_place      = 16.3;   
-hole_offset     = 2.2;    //not checked
-mount_hole_r    = 2/2;
-mount_slot      = 1;
-
-servo_ww        = servo_w+wing_w*2; // not used in code but is handy number
-
-hub_h           = 4;
-small_hub_r     = 6.15/2;  
-horn_r          = 4.66/2;
-horn_h          = 3;
-
-wire_l          = 4;
-wire_w          = 1.5;
-wire_h          = 1;
-wire_place      = 4.8;
-
-servo_full_w    = servo_w+wing_w*2;
 module servo_12g() {
   
     translate([-servo_l/2, -servo_w/2, -body_h/2-hub_h/2-horn_h/2]) {

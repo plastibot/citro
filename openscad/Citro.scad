@@ -1,17 +1,8 @@
-include <servo_12g.scad>
-include <servo_5g.scad>
-include <electronics.scad>
+include <Config.scad>
+use <servo_12g.scad>
+use <servo_5g.scad>
+use <electronics.scad>
 
-rad = 2;
-
-mount_x = servo5_l + 2;
-mount_y = servo5_w + 2;
-mount_round = 1;
-servo_tol = 0.2;
-servo5_x     = servo5_l + servo_tol*2; //~12
-servo5_y     = servo5_w + servo_tol*8; //~23
-
-// 8, 4.6, length =10 
 
 
 //Citro6_20();
@@ -36,19 +27,19 @@ servo5_y     = servo5_w + servo_tol*8; //~23
 //Citro6_40();
 
 //rotate([-90,0,0])
-//Citro6_50();
+//Citro6_53();
 /**
 //head servo
 translate([-2.5,-8,26])
 rotate([0, 90, 0])
 rotate([0, 0, 180])
-Citro6_50();
+Citro6_53();
 
 //body servo
 translate([0,-30,20])
 rotate([90, 0, 0])
 rotate([0, 0, 0])
-Citro6_50();
+Citro6_53();
 
 translate([0,-3,34.5])
 //rotate([0,0,180])
@@ -73,7 +64,7 @@ pi_camera();
 //color("skyblue", 0.2)
 //translate([0, 50, 42])
 //rotate([180, 0, 180])
-//Citro5_40_mod();
+//Citro6_50();
 
 //rotate([180, 0, 0])
 //Citro6_27();
@@ -1031,357 +1022,6 @@ difference(){
     }
     
 }
-module Citro6_40(){
-
-translate([15,15,0])
-union(){
-    
-    import("MiniPlan6_40A.stl", convexity=3);
-    
-    color("red")
-    translate([-6.5, 1, 24.2])
-    cube([9,26,0.4], center=true);
-    
-    color("red")
-    translate([6.5, -10.2, 13])
-    cube([9,0.4,26], center=true);
-    
-    
-}
-
-translate([-15,15,0])
-union(){
-    
-    import("MiniPlan6_40B.stl", convexity=3);
-    
-    color("red")
-    translate([6.5, 1, 24.2])
-    cube([9,26,0.4], center=true);
-    
-    color("red")
-    translate([-6.5, -10.2, 13])
-    cube([9,0.4,26], center=true);
-    
-    
-}
-
-translate([15,-15,0])
-union(){
-    
-    import("MiniPlan6_40D.stl", convexity=3);
-    
-    color("red")
-    translate([6.5, -1, 24.2])
-    cube([9,26,0.4], center=true);
-    
-    color("red")
-    translate([-6.5, 10.2, 13])
-    cube([9,0.4,26], center=true);
-    
-    
-}
-
-translate([-15,-15,0])
-union(){
-    
-    import("MiniPlan6_40C.stl", convexity=3);
-    
-    color("red")
-    translate([-6.5, -1, 24.2])
-    cube([9,26,0.4], center=true);
-    
-    color("red")
-    translate([6.5, 10.2, 13])
-    cube([9,0.4,26], center=true);
-    
-    
-}
-
-}
-
-module Citro6_50(){
-
-echo("mount_y: ", mount_y);
-    
-    mount5_x = servo5_l + 2;
-    mount5_y = servo5_w + 2;
-    mount_round = 1;
-    servo_tol = 0.2;
-    
-
-difference() {
-        union() {
-            translate([-mount5_x/2,-mount5_y/2,-body5_h/2+1])
-            roundedRect([mount5_x-mount_round,mount5_y-mount_round,body5_h+5], mount_round);
-            
-            translate([0, -5, body5_h-1.25])
-            cylinder(d=4, h=2, $fn=64);
-            
-            //bracket to attach to head
-            translate([5.25, 1.3, -14])
-            cube([2, 9, mount5_y+14.25]); 
-            
-            translate([4, 1.3, -6.33])
-            cube([2, 9, mount5_y-0.95]);
-            
-        }
-    translate([0,0,4])
-    cube([servo5_l, servo5_w, body5_h], center=true);
-        
-    translate([0,-9-5,1.5])
-    cube([servo5_l, servo5_w, body5_h+4], center=true);
-        
-    
-    
-    translate([0,0,0.25])
-    //translate([(mount5_x-servo5_y)/2+servo5_y-4*servo_tol,(mount5_y-servo5_l)/2,2])
-    rotate([0,180,0])
-    servo_5g(false);
-        
-    translate([0,9+1,6.8])
-    cube([4, 5, 9], center=true);
-        
-    
-    
-    ////translate([(mount5_x-servo_y)/2+servo_y-4*servo_tol,(mount5_y-servo_l)/2,2])
-    //translate([8,servo_l+2,2])
-    //rotate([0,0,-90])
-    //servo_60g(false);
-    
-    translate([4.5, 0.5, 3.5]) rotate([0, 90, 0]) {
-        
-            translate([-31/2, 26/2-7.5,-1]) 
-            cylinder(d=2, h=5);
-                        
-            translate([31/2, 26/2-7.5,-1]) 
-            cylinder(d=2, h=5);
-    }
-
-
-    
-}
-}
-
-module Citro5_40_mod(){
-    difference(){
-        
-        union(){
-            
-            translate([0,0,0])
-            //color("red")
-            import("MiniPlan5_40.stl", convexity=3);
-            
-            translate([0, 7, 34]) hull(){
-                
-                translate([-15, 0, 0]) rotate([0, 0, 0]) cylinder(d=3, h=12, $fn=32);
-                translate([15, 0, 0]) rotate([0, 0, 0]) cylinder(d=3, h=12, $fn=32);
-                translate([11, 4, 0]) rotate([11, -10, 0]) cylinder(d=3, h=12, $fn=32);
-                translate([-11, 4, 0]) rotate([11, 10, 0]) cylinder(d=3, h=12, $fn=32);
-                
-            
-            }
-            
-            //was 35
-            translate([0, 1, 34]) {
-            
-            translate([-31/2,-26/2,-1]) 
-            cylinder(d=5, h=5);
-            
-            translate([-31/2, 26/2-7.5,-1]) 
-            cylinder(d=5, h=5);
-            
-            translate([31/2,-26/2,-1]) 
-            cylinder(d=5, h=5);
-            
-            translate([31/2, 26/2-7.5,-1]) 
-            cylinder(d=5, h=5);
-            
-        }
-
-            
-            //new wider ears to put speakers
-            //color("green", 0.4)
-            translate([19.9, -2.5, 25.5])
-            rotate([0, 90, 0])
-            cylinder(d1=26, d2=19, h=3.2, $fn=64);
-            
-            //color("green", 0.4)
-            translate([-19.9, -2.5, 25.5])
-            rotate([0, -90, 0])
-            cylinder(d1=26, d2=19, h=3.2, $fn=64);
-            
-            
-            //color("orange", 0.3)
-            translate([0, -3.2, 37.5])
-            cube([25, 22, 4], center=true);
-            
-        }
-        
-        translate([-25,-20,41.75])
-        cube([50, 40, 20]);
-        
-        translate([-26/2,-26/2-2,29])
-        cube([26, 26, 7]);
-        
-        translate([0,-3,34.5])
-        //rotate([0,0,180])
-        pi_camera();
-        
-        
-        translate([0, -3, 36]) {
-            
-            translate([-21/2,-20/2,-1]) 
-            #cylinder(d=2, h=5);
-            
-            translate([-21/2, 20/2-7.5,-1]) 
-            #cylinder(d=2, h=5);
-            
-            translate([21/2,-20/2,-1]) 
-            #cylinder(d=2, h=5);
-            
-            translate([21/2, 20/2-7.5,-1]) 
-            #cylinder(d=2, h=5);
-            
-        }
-        
-        translate([0, 1, 33]) {
-            
-            translate([-31/2,-26/2,-1]) 
-            #cylinder(d=2, h=8);
-            
-            translate([-31/2, 26/2-7.5,-1]) 
-            #cylinder(d=2, h=8);
-            
-            translate([31/2,-26/2,-1]) 
-            #cylinder(d=2, h=8);
-            
-            translate([31/2, 26/2-7.5,-1]) 
-            #cylinder(d=2, h=8);
-            
-        }
-        
-        
-        //cavity for ear speakers
-        //color("green", 0.4)
-        translate([19.9, -2.5, 27]) 
-        union(){
-            intersection(){
-            
-         
-                cube([4, 15.5, 15.5], center=true);
-                
-                rotate([45, 0, 0])
-                cube([4, 17.5, 17.5], center=true);
-                
-            }
-                
-            translate([0, 0, -7.5])
-            cube([4, 13, 4.6], center=true);
-            
-            translate([1.9, 0, 0])
-            rotate([0, 90, 0])
-            cylinder(d=11, h=2, $fn=32);
-            
-            
-        }
-        
-        
-        translate([-19.9, -2.5, 27]) 
-        union(){
-            intersection(){
-            
-         
-                cube([4, 15.5, 15.5], center=true);
-                
-                rotate([45, 0, 0])
-                cube([4, 17.5, 17.5], center=true);
-                
-            }
-                
-            translate([0, 0, -7.5])
-            cube([4, 13, 4], center=true);
-            
-            translate([-1.9, 0, 0])
-            rotate([0, -90, 0])
-            cylinder(d=11, h=2, $fn=32);
-            
-            
-        }
-        
-        
-
-        
-            
-        
-        
-        
-    }
-
-}
-module Citro6_52(){
-    
-    difference(){
-        union(){
-            
-            translate([-2, 0, 0])
-            cube([4, 10, servo5_h+6]);
-            
-            translate([0, 0, 0])
-            cube([4, 10, 3]);
-            
-            translate([0, 0, 0]) hull(){
-                
-                translate([20, 16, 0]) 
-                cylinder(d=10, h=3, $fn=32);
-                
-                translate([4,0,0]) 
-                cube([1.5, 10, 3]);
-    
-            }
-        }
-        
-        translate([20, 16, 1]) 
-        cylinder(d=4, h=4, $fn=32);
-        
-        /**
-        translate([2, 10/2, servo5_h/2+3])
-        #hull(){
-            
-            translate([0, -5.3/2-1, -5.3/2-1])
-            rotate([0, 90, 0])
-            cylinder(d=2, h=2, $fn=32);
-            
-            translate([0, 5.3/2+1, 5.3/2+1])
-            rotate([0, 90, 0])
-            cylinder(d=2, h=2, $fn=32);
-            
-        }
-        **/ 
-            
-        translate([0, -5.3/2+10/2, -13/2+servo5_h/2+4])
-        cube([2.1, 5.6, 13]);
-        
-        translate([0, -9.4/2+10/2, -5.3/2+servo5_h/2+4])
-        cube([2.1, 9.4, 5.6]);
-        
-        translate([-2.1, 10/2, servo5_h/2+4])
-        rotate([0, 90, 0])
-        cylinder(d=5.84, h=4, $fn=32);
-        
-        translate([0, 10/2, servo5_h/2+4])
-        rotate([22.5, 0, 0])
-        rotate([0, 90, 0])
-        cylinder(d=9.54, h=4, $fn=8);
-        
-        translate([0, 2, servo5_h+1]) 
-        cylinder(d=2, h=6.1, $fn=32);
-        
-        translate([0, 8, servo5_h+1]) 
-        cylinder(d=2, h=6.1, $fn=32);
-        
-    }
-}
-
 module Citro6_27(){
     
     difference(){
@@ -1541,56 +1181,6 @@ module Citro6_27(){
     
 }
 
-module Citro6_51(){
-    
-    difference(){
-        union(){
-            
-            translate([-2, 0, 0])
-            cube([6, 10, 3]);
-            
-            //translate([20, 16, 0]) 
-            //cylinder(d=12, h=3, $fn=32);
-            
-            translate([0, 0, 0]) hull(){
-                
-                translate([20, 16, 0]) 
-                cylinder(d=10, h=3, $fn=32);
-                
-                translate([4,0,0]) 
-                cube([1.5, 10, 3]);
-    
-            }
-        }
-        
-        translate([20, 16, -1]) 
-        cylinder(d=5.84, h=4, $fn=32);
-        
-        translate([20, 16, 1]) 
-        rotate([0, 0, 22.5])
-        cylinder(d=6.54, h=4, $fn=8);
-        
-        //rotate([0,0,10])    
-        translate([20-3.3/2, 16-8/2, 1])
-        //rotate([0,0,10])
-        cube([3.3, 8, 2.1]);
-        
-        translate([20-8/2, 16-3.3/2, 1])
-        cube([8, 3.3, 2.1]);
-        
-        //translate([-0.1, 10/2, servo5_h/2+3])
-        //rotate([0, 90, 0])
-        //#cylinder(d=5.84, h=4, $fn=32);
-        
-        translate([0, 2, -0.1]) 
-        cylinder(d=2, h=4.1, $fn=32);
-        
-        translate([0, 8, -0.1]) 
-        cylinder(d=2, h=4.1, $fn=32);
-        
-    }
-}
-
 module Citro6_29(){
     
     difference(){
@@ -1734,3 +1324,405 @@ difference() {
     
 }
 }
+
+module Citro6_40(){
+
+translate([15,15,0])
+union(){
+    
+    import("MiniPlan6_40A.stl", convexity=3);
+    
+    color("red")
+    translate([-6.5, 1, 24.2])
+    cube([9,26,0.4], center=true);
+    
+    color("red")
+    translate([6.5, -10.2, 13])
+    cube([9,0.4,26], center=true);
+    
+    
+}
+
+translate([-15,15,0])
+union(){
+    
+    import("MiniPlan6_40B.stl", convexity=3);
+    
+    color("red")
+    translate([6.5, 1, 24.2])
+    cube([9,26,0.4], center=true);
+    
+    color("red")
+    translate([-6.5, -10.2, 13])
+    cube([9,0.4,26], center=true);
+    
+    
+}
+
+translate([15,-15,0])
+union(){
+    
+    import("MiniPlan6_40D.stl", convexity=3);
+    
+    color("red")
+    translate([6.5, -1, 24.2])
+    cube([9,26,0.4], center=true);
+    
+    color("red")
+    translate([-6.5, 10.2, 13])
+    cube([9,0.4,26], center=true);
+    
+    
+}
+
+translate([-15,-15,0])
+union(){
+    
+    import("MiniPlan6_40C.stl", convexity=3);
+    
+    color("red")
+    translate([-6.5, -1, 24.2])
+    cube([9,26,0.4], center=true);
+    
+    color("red")
+    translate([6.5, 10.2, 13])
+    cube([9,0.4,26], center=true);
+    
+    
+}
+
+}
+
+module Citro6_50(){
+    difference(){
+        
+        union(){
+            
+            translate([0,0,0])
+            //color("red")
+            import("MiniPlan5_40.stl", convexity=3);
+            
+            translate([0, 7, 34]) hull(){
+                
+                translate([-15, 0, 0]) rotate([0, 0, 0]) cylinder(d=3, h=12, $fn=32);
+                translate([15, 0, 0]) rotate([0, 0, 0]) cylinder(d=3, h=12, $fn=32);
+                translate([11, 4, 0]) rotate([11, -10, 0]) cylinder(d=3, h=12, $fn=32);
+                translate([-11, 4, 0]) rotate([11, 10, 0]) cylinder(d=3, h=12, $fn=32);
+                
+            
+            }
+            
+            //was 35
+            translate([0, 1, 34]) {
+            
+            translate([-31/2,-26/2,-1]) 
+            cylinder(d=5, h=5);
+            
+            translate([-31/2, 26/2-7.5,-1]) 
+            cylinder(d=5, h=5);
+            
+            translate([31/2,-26/2,-1]) 
+            cylinder(d=5, h=5);
+            
+            translate([31/2, 26/2-7.5,-1]) 
+            cylinder(d=5, h=5);
+            
+        }
+
+            
+            //new wider ears to put speakers
+            //color("green", 0.4)
+            translate([19.9, -2.5, 25.5])
+            rotate([0, 90, 0])
+            cylinder(d1=26, d2=19, h=3.2, $fn=64);
+            
+            //color("green", 0.4)
+            translate([-19.9, -2.5, 25.5])
+            rotate([0, -90, 0])
+            cylinder(d1=26, d2=19, h=3.2, $fn=64);
+            
+            
+            //color("orange", 0.3)
+            translate([0, -3.2, 37.5])
+            cube([25, 22, 4], center=true);
+            
+        }
+        
+        translate([-25,-20,41.75])
+        cube([50, 40, 20]);
+        
+        translate([-26/2,-26/2-2,29])
+        cube([26, 26, 7]);
+        
+        translate([0,-3,34.5])
+        //rotate([0,0,180])
+        pi_camera();
+        
+        
+        translate([0, -3, 36]) {
+            
+            translate([-21/2,-20/2,-1]) 
+            #cylinder(d=2, h=5);
+            
+            translate([-21/2, 20/2-7.5,-1]) 
+            #cylinder(d=2, h=5);
+            
+            translate([21/2,-20/2,-1]) 
+            #cylinder(d=2, h=5);
+            
+            translate([21/2, 20/2-7.5,-1]) 
+            #cylinder(d=2, h=5);
+            
+        }
+        
+        translate([0, 1, 33]) {
+            
+            translate([-31/2,-26/2,-1]) 
+            #cylinder(d=2, h=8);
+            
+            translate([-31/2, 26/2-7.5,-1]) 
+            #cylinder(d=2, h=8);
+            
+            translate([31/2,-26/2,-1]) 
+            #cylinder(d=2, h=8);
+            
+            translate([31/2, 26/2-7.5,-1]) 
+            #cylinder(d=2, h=8);
+            
+        }
+        
+        
+        //cavity for ear speakers
+        //color("green", 0.4)
+        translate([19.9, -2.5, 27]) 
+        union(){
+            intersection(){
+            
+         
+                cube([4, 15.5, 15.5], center=true);
+                
+                rotate([45, 0, 0])
+                cube([4, 17.5, 17.5], center=true);
+                
+            }
+                
+            translate([0, 0, -7.5])
+            cube([4, 13, 4.6], center=true);
+            
+            translate([1.9, 0, 0])
+            rotate([0, 90, 0])
+            cylinder(d=11, h=2, $fn=32);
+            
+            
+        }
+        
+        
+        translate([-19.9, -2.5, 27]) 
+        union(){
+            intersection(){
+            
+         
+                cube([4, 15.5, 15.5], center=true);
+                
+                rotate([45, 0, 0])
+                cube([4, 17.5, 17.5], center=true);
+                
+            }
+                
+            translate([0, 0, -7.5])
+            cube([4, 13, 4], center=true);
+            
+            translate([-1.9, 0, 0])
+            rotate([0, -90, 0])
+            cylinder(d=11, h=2, $fn=32);
+            
+            
+        }
+        
+        
+
+        
+            
+        
+        
+        
+    }
+
+}
+module Citro6_51(){
+    
+    difference(){
+        union(){
+            
+            translate([-2, 0, 0])
+            cube([6, 10, 3]);
+            
+            //translate([20, 16, 0]) 
+            //cylinder(d=12, h=3, $fn=32);
+            
+            translate([0, 0, 0]) hull(){
+                
+                translate([20, 16, 0]) 
+                cylinder(d=10, h=3, $fn=32);
+                
+                translate([4,0,0]) 
+                cube([1.5, 10, 3]);
+    
+            }
+        }
+        
+        translate([20, 16, -1]) 
+        cylinder(d=5.84, h=4, $fn=32);
+        
+        translate([20, 16, 1]) 
+        rotate([0, 0, 22.5])
+        cylinder(d=6.54, h=4, $fn=8);
+        
+        //rotate([0,0,10])    
+        translate([20-3.3/2, 16-8/2, 1])
+        //rotate([0,0,10])
+        cube([3.3, 8, 2.1]);
+        
+        translate([20-8/2, 16-3.3/2, 1])
+        cube([8, 3.3, 2.1]);
+        
+        //translate([-0.1, 10/2, servo5_h/2+3])
+        //rotate([0, 90, 0])
+        //#cylinder(d=5.84, h=4, $fn=32);
+        
+        translate([0, 2, -0.1]) 
+        cylinder(d=2, h=4.1, $fn=32);
+        
+        translate([0, 8, -0.1]) 
+        cylinder(d=2, h=4.1, $fn=32);
+        
+    }
+}
+
+module Citro6_52(){
+    
+    difference(){
+        union(){
+            
+            translate([-2, 0, 0])
+            cube([4, 10, servo5_h+6]);
+            
+            translate([0, 0, 0])
+            cube([4, 10, 3]);
+            
+            translate([0, 0, 0]) hull(){
+                
+                translate([20, 16, 0]) 
+                cylinder(d=10, h=3, $fn=32);
+                
+                translate([4,0,0]) 
+                cube([1.5, 10, 3]);
+    
+            }
+        }
+        
+        translate([20, 16, 1]) 
+        cylinder(d=4, h=4, $fn=32);
+        
+        /**
+        translate([2, 10/2, servo5_h/2+3])
+        #hull(){
+            
+            translate([0, -5.3/2-1, -5.3/2-1])
+            rotate([0, 90, 0])
+            cylinder(d=2, h=2, $fn=32);
+            
+            translate([0, 5.3/2+1, 5.3/2+1])
+            rotate([0, 90, 0])
+            cylinder(d=2, h=2, $fn=32);
+            
+        }
+        **/ 
+            
+        translate([0, -5.3/2+10/2, -13/2+servo5_h/2+4])
+        cube([2.1, 5.6, 13]);
+        
+        translate([0, -9.4/2+10/2, -5.3/2+servo5_h/2+4])
+        cube([2.1, 9.4, 5.6]);
+        
+        translate([-2.1, 10/2, servo5_h/2+4])
+        rotate([0, 90, 0])
+        cylinder(d=5.84, h=4, $fn=32);
+        
+        translate([0, 10/2, servo5_h/2+4])
+        rotate([22.5, 0, 0])
+        rotate([0, 90, 0])
+        cylinder(d=9.54, h=4, $fn=8);
+        
+        translate([0, 2, servo5_h+1]) 
+        cylinder(d=2, h=6.1, $fn=32);
+        
+        translate([0, 8, servo5_h+1]) 
+        cylinder(d=2, h=6.1, $fn=32);
+        
+    }
+}
+
+module Citro6_53(){
+
+echo("mount_y: ", mount_y);
+    
+    mount5_x = servo5_l + 2;
+    mount5_y = servo5_w + 2;
+    mount_round = 1;
+    servo_tol = 0.2;
+    
+
+difference() {
+        union() {
+            translate([-mount5_x/2,-mount5_y/2,-body5_h/2+1])
+            roundedRect([mount5_x-mount_round,mount5_y-mount_round,body5_h+5], mount_round);
+            
+            translate([0, -5, body5_h-1.25])
+            cylinder(d=4, h=2, $fn=64);
+            
+            //bracket to attach to head
+            translate([5.25, 1.3, -14])
+            cube([2, 9, mount5_y+14.25]); 
+            
+            translate([4, 1.3, -6.33])
+            cube([2, 9, mount5_y-0.95]);
+            
+        }
+    translate([0,0,4])
+    cube([servo5_l, servo5_w, body5_h], center=true);
+        
+    translate([0,-9-5,1.5])
+    cube([servo5_l, servo5_w, body5_h+4], center=true);
+        
+    
+    
+    translate([0,0,0.25])
+    //translate([(mount5_x-servo5_y)/2+servo5_y-4*servo_tol,(mount5_y-servo5_l)/2,2])
+    rotate([0,180,0])
+    servo_5g(false);
+        
+    translate([0,9+1,6.8])
+    cube([4, 5, 9], center=true);
+        
+    
+    
+    ////translate([(mount5_x-servo_y)/2+servo_y-4*servo_tol,(mount5_y-servo_l)/2,2])
+    //translate([8,servo_l+2,2])
+    //rotate([0,0,-90])
+    //servo_60g(false);
+    
+    translate([4.5, 0.5, 3.5]) rotate([0, 90, 0]) {
+        
+            translate([-31/2, 26/2-7.5,-1]) 
+            cylinder(d=2, h=5);
+                        
+            translate([31/2, 26/2-7.5,-1]) 
+            cylinder(d=2, h=5);
+    }
+
+
+    
+}
+}
+

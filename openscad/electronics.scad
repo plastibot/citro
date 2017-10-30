@@ -1,88 +1,88 @@
-/* (c) 2016++ by Saarbastler 
-**  https://github.com/saarbastler/library.scad
-**
-** Raspberry PI model library for generating cases etc.
-*/
+
 $fn=100;
 
-module header(pins, rows)
-{
+//on_off_switch();
+
+//pi_zero();
+
+//translate ([0,100,0])
+//pca9685();
+
+//dc_dc();
+
+//pi_camera();
+
+
+
+module header(pins, rows){
   color("darkgrey") cube([2.54*pins,2.54*rows,1.27]);
   
+  color("gold")
   for(x=[0:pins-1],y=[0:rows-1])
     translate([x*2.54+(1.27+.6)/2,y*2.54+(1.27+.6)/2,-3.5]) cube([0.6,0.6,11.5]);
 }
 
 
-module pi_zero()
-{
-  // PCB
-  color("limegreen") difference()
-  {
-    hull()
-    {
-      translate([-(65-6)/2,-(30-6)/2,0]) cylinder(r=3, h=1.4 );
-      translate([-(65-6)/2, (30-6)/2,0]) cylinder(r=3, h=1.4 );
-      translate([ (65-6)/2,-(30-6)/2,0]) cylinder(r=3, h=1.4 );
-      translate([ (65-6)/2, (30-6)/2,0]) cylinder(r=3, h=1.4 );
+module pi_zero(){
+    // PCB
+    color("limegreen") difference(){
+        hull(){
+            translate([-(65-6)/2,-(30-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([-(65-6)/2, (30-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (65-6)/2,-(30-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (65-6)/2, (30-6)/2,0]) cylinder(r=3, h=1.4 );
+        }
+        
+        translate([-65/2+3.5,-30/2+3.5,-1]) cylinder(d=2.75, h=3);
+        translate([-65/2+3.5, 30/2-3.5,-1]) cylinder(d=2.75, h=3);
+        translate([65/2-3.5,-30/2+3.5,-1]) cylinder(d=2.75, h=3);
+        translate([65/2-3.5, 30/2-3.5,-1]) cylinder(d=2.75, h=3);
     }
     
-    translate([-65/2+3.5,-30/2+3.5,-1]) #cylinder(d=2.75, h=3);
-    translate([-65/2+3.5, 30/2-3.5,-1]) #cylinder(d=2.75, h=3);
-    translate([65/2-3.5,-30/2+3.5,-1]) #cylinder(d=2.75, h=3);
-    translate([65/2-3.5, 30/2-3.5,-1]) #cylinder(d=2.75, h=3);
-  }
-  
-  // Header
-  translate([-10*2.54,30/2-2.54-3.5,1.4])
+    // Header
+    translate([-10*2.54,30/2-2.54-3.5,1.4])
     header(20,2);
-  
-  translate([-65/2,-30/2,1.4])  
-  {
-    color("silver") 
-    {
-      
-      // micro USB
-      translate([41-8/2,-1.5,0]) cube([8,6,2.6]);
-      translate([54-8/2,-1.5,0]) cube([8,6,2.6]);        
-      
-      // HDMI
-      translate([6.9,-1.5,0]) cube([13,7,3]);
-    }
     
-    color("darkgrey") 
-    {
-      
-      // Camera
-      translate([64-4/2,7.1,0]) cube([4,16,2.5]);
-    }
+    translate([-65/2,-30/2,1.4]){
+        color("silver"){
+        
+            // micro USB
+            translate([41-8/2,-1.5,0]) cube([8,6,2.6]);
+            translate([54-8/2,-1.5,0]) cube([8,6,2.6]);        
+            
+            // HDMI
+            translate([6.9,-1.5,0]) cube([13,7,3]);
+        }
     
-    // Micro SD Card
-    color("silver") translate([0,8.6,-0]) cube([13,14,1.5]);    
-    color("darkgrey") translate([-2.4,10.1,0]) cube([2.4,11,1]);
-  }
+        color("darkgrey"){
+        
+            // Camera
+            translate([64-4/2,7.1,0]) cube([4,16,2.5]);
+        }
+    
+        // Micro SD Card
+        color("silver") translate([0,8.6,-0]) cube([13,14,1.5]);    
+        color("darkgrey") translate([-2.4,10.1,0]) cube([2.4,11,1]);
+    }
 }
 
 
 
-module pca9685(withHeader=true)
-{  
+module pca9685(withHeader=true){  
   
     // PCB
-    color("limegreen") difference()
-    {
-      translate([0,0,0]) hull()
-      {
-        translate([-(62.5-6)/2,-(25.4-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([-(62.5-6)/2, (25.4-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([ (62.5-6)/2,-(25.4-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([ (62.5-6)/2, (25.4-6)/2,0]) cylinder(r=3, h=1.4 );
-      }
-      
-      translate([-55.9/2,-18.8/2,-1]) cylinder(d=2.75, h=3);
-      translate([-55.9/2, 18.8/2,-1]) cylinder(d=2.75, h=3);
-      translate([55.9/2,-18.8/2,-1]) cylinder(d=2.75, h=3);
-      translate([55.9/2, 18.8/2,-1]) cylinder(d=2.75, h=3);
+    color("limegreen") difference(){
+        translate([0,0,0]) hull(){
+            translate([-(62.5-6)/2,-(25.4-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([-(62.5-6)/2, (25.4-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (62.5-6)/2,-(25.4-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (62.5-6)/2, (25.4-6)/2,0]) cylinder(r=3, h=1.4 );
+        }
+        
+        translate([-55.9/2,-18.8/2,-1]) cylinder(d=2.75, h=3);
+        translate([-55.9/2, 18.8/2,-1]) cylinder(d=2.75, h=3);
+        translate([55.9/2,-18.8/2,-1]) cylinder(d=2.75, h=3);
+        translate([55.9/2, 18.8/2,-1]) cylinder(d=2.75, h=3);
     } 
     
     
@@ -123,17 +123,15 @@ module pca9685(withHeader=true)
 module dc_dc(){
     
     // PCB
-    color("limegreen") difference()
-    {
-      translate([0,0,0]) hull()
-      {
-        translate([-(24.5-6)/2,-(48-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([-(24.5-6)/2, (48-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([ (24.5-6)/2,-(48-6)/2,0]) cylinder(r=3, h=1.4 );
-        translate([ (24.5-6)/2, (48-6)/2,0]) cylinder(r=3, h=1.4 );
-      }
+    color("limegreen") difference(){
+        translate([0,0,0]) hull(){
+            translate([-(24.5-6)/2,-(48-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([-(24.5-6)/2, (48-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (24.5-6)/2,-(48-6)/2,0]) cylinder(r=3, h=1.4 );
+            translate([ (24.5-6)/2, (48-6)/2,0]) cylinder(r=3, h=1.4 );
+        }
       
-      translate([0,0,-1]) {
+        translate([0,0,-1]) {
             
             //translate([-17/2,-35/2,0])
             //cylinder(d=3.15, h=2.5);
@@ -147,7 +145,7 @@ module dc_dc(){
             //translate([17/2,35/2, 0])
             //cylinder(d=3.15, h=2.5); 
           
-      }
+        }
 
 
     } 
@@ -281,13 +279,3 @@ module pi_camera(){
     
 }
 
-//on_off_switch();
-
-//pi_zero();
-
-//translate ([0,100,0])
-//pca9685();
-
-//dc_dc();
-
-//pi_camera();

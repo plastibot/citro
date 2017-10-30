@@ -1,25 +1,11 @@
-//servo_5g();
+include <Config.scad>
 
-//use<hub_mount.scad>
-//use<MCAD/nuts_and_bolts.scad>
+servo_5g();
+
+
 $fn = 24;
 //x,y,z => l,w,h
 
-tap_r = 0.85;
-hole_r = 1.0;
-
-servo5_l         = 8.6; 
-servo5_w         = 18.6; 
-body5_h          = 14.65;
-
-
-
-hub5_h = 2.15;
-small_hub5_r = 4.6/2;  
-horn5_r = 4.66/2;
-horn5_h = 3;
-
-servo5_h         = body5_h+hub5_h+horn5_h;
 
 module servo_5g() {
   

@@ -1,20 +1,12 @@
-include <servo_12g.scad>
-include <servo_5g.scad>
-include <electronics.scad>
-
-rad = 2;
-
-mount_x = servo5_l + 2;
-mount_y = servo5_w + 2;
-mount_round = 1;
-servo_tol = 0.2;
-servo5_x     = servo5_l + servo_tol*2; //~12
-servo5_y     = servo5_w + servo_tol*8; //~23
-
-// 8, 4.6, length =10 
+include <Config.scad>
+use <servo_12g.scad>
+use <servo_5g.scad>
+use <electronics.scad>
 
 
+rotate([0, 180, 0])
 Citro6_25();
+
 
 module Citro6_25(){
     
