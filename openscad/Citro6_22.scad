@@ -120,8 +120,8 @@ module Citro6_22(){
         translate([-26/2, -11/2+56/2-21-0.5, -0.5])
         roundedRect([26-rad+1, 11-rad+1, 3], rad-1);
         
-        translate([-4/2, -11/2-56/2+11/2+6.5+3.5+2, -0.5])
-        roundedRect([4-rad+1, 11-rad+1, 3], rad-1);
+        translate([-4/2, -13/2-56/2+13/2+6.5+3.5+2, -0.5])
+        roundedRect([4-rad+1, 13-rad+1, 3], rad-1);
         
         //side slots
         translate([-6/2-69/2, -22, -0.5])
@@ -144,8 +144,8 @@ module Citro6_22(){
         
         
         //holes to attach
-        translate([0,-2,1])
-        cylinder(d=2, h=4, center=true, $fn=64);
+        //translate([0,-2,1])
+        //cylinder(d=2, h=4, center=true, $fn=64);
         
         translate([0,-19.25,1])
         cylinder(d=2, h=4, center=true, $fn=64);

@@ -26,7 +26,16 @@ module Citro6_21(){
             translate([-22, -4, 0])
             //cube([44, 4.58, 12]);
             roundedRect([44-rad+1, 4.58-rad+1, 12], rad-1);
-                        
+            
+            translate([-13.5, 9, 0])
+            //cube([7, 22, 12]);
+            roundedRect([8-rad+1, 5-rad+1, 12], rad-1);
+            
+            translate([5.5, 9, 0])
+            //cube([7, 22, 12]);
+            roundedRect([8-rad+1, 5-rad+1, 12], rad-1);
+            
+            
             //translate([-2.5+7.5, -4, 11])
             //cube([5, 5.25, 3]);
             
@@ -44,15 +53,15 @@ module Citro6_21(){
             
         }
         
-        translate([-4/2, -11/2-56/2+11/2+6.5+3.5+2, -0.5])
-        roundedRect([4-rad+1, 11-rad+1, 13], rad-1);
+        translate([-4/2, -13/2-56/2+13/2+6.5+3.5+2, -0.5])
+        roundedRect([4-rad+1, 13-rad+1, 13], rad-1);
         
         translate([-23/2, -7.5/2+8/2+1, -0.5])
         roundedRect([23-rad+1, 7.5-rad+1, 13], rad-1);
         
         //holes to attach to body
-        translate([0,-2,6])
-        cylinder(d=2, h=14, center=true, $fn=64);
+        //translate([0,-2,6])
+        //cylinder(d=2, h=14, center=true, $fn=64);
         
         translate([0,-19.25,6])
         cylinder(d=2, h=14, center=true, $fn=64);

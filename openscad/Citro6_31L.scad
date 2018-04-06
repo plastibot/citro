@@ -1,3 +1,8 @@
 
+Citro6_31L();
 
-import("../Miniplan6/MiniPlan6_31L.stl", convexity=3);
+module Citro6_31L(){
+    
+    import("../Miniplan6/MiniPlan6_31L.stl", convexity=3);
+    
+}

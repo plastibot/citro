@@ -90,13 +90,13 @@ module Citro6_20(){
         translate([-25/2, -8/2+56/2-21-2, -0.5])
         roundedRect([25-rad+1, 8-rad+1, 3], rad-1);
         
-        translate([-4/2, -11/2-56/2+11/2+6.5+3.5+2, -0.5])
-        roundedRect([4-rad+1, 11-rad+1, 3], rad-1);
+        translate([-4/2, -13/2-56/2+13/2+6.5+3.5+2, -0.5])
+        roundedRect([4-rad+1, 13-rad+1, 3], rad-1);
         
         
         //holes to attach
-        translate([0,-2,1])
-        cylinder(d=2, h=4, center=true, $fn=64);
+        //translate([0,-2,1])
+        //cylinder(d=2, h=4, center=true, $fn=64);
         
         translate([0,-19.25,1])
         cylinder(d=2, h=4, center=true, $fn=64);
@@ -165,21 +165,21 @@ module Citro6_20(){
             translate([-26/2, 1.3/2-1.1, -17/2])
             cube([26, 1.3, 17]);
             
-            translate([9, 1, -3.5])
-            rotate([90, 0, 0])
-            cylinder(d=2, h=4, center=true, $fn=64);
+            //translate([9, 1, -3.5])
+            //rotate([90, 0, 0])
+            //cylinder(d=2, h=4, center=true, $fn=64);
             
-            translate([9, 1, 3.5])
-            rotate([90, 0, 0])
-            cylinder(d=2, h=4, center=true, $fn=64);
+            //translate([9, 1, 3.5])
+            //rotate([90, 0, 0])
+            //cylinder(d=2, h=4, center=true, $fn=64);
             
-            translate([-9, 1, -3.5])
-            rotate([90, 0, 0])
-            cylinder(d=2, h=4, center=true, $fn=64);
+            //translate([-9, 1, -3.5])
+            //rotate([90, 0, 0])
+            //cylinder(d=2, h=4, center=true, $fn=64);
             
-            translate([-9, 1, 3.5])
-            rotate([90, 0, 0])
-            cylinder(d=2, h=4, center=true, $fn=64);
+            //translate([-9, 1, 3.5])
+            //rotate([90, 0, 0])
+            //cylinder(d=2, h=4, center=true, $fn=64);
             
             
         }
@@ -215,31 +215,7 @@ module Citro6_20(){
         **/
     }
     
-    /**
-    translate([-76/2+19.65/2, 56/2-servo_l-3, servo_l/2+2])
-    rotate([0,90,180])
-    servo_12g();
-    
-    translate([76/2-19.65/2, 56/2-servo_l-3, servo_l/2+2])
-    rotate([0,-90,180])
-    servo_12g();
-    
-    translate([16.6, -56/2+9.75, servo_l/2+2])
-    rotate([0,-90,90])
-    servo_12g();
-    
-    translate([-16.6, -56/2+9.75, servo_l/2+2])
-    rotate([0,-90,90])
-    rotate([0,0,180])
-    servo_12g();
-    
-    
-    translate([0, 56/2-6.75, servo5_l/2+1])
-    rotate([-90,0,0])
-    //rotate([0,0,180])
-    servo_5g();
-    
-    **/
+   
 }
 
 
