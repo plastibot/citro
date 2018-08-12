@@ -15,7 +15,7 @@ module Citro6_50(){
             
             translate([0,0,0])
             //color("red")
-            import("../Miniplan6/MiniPlan5_40.stl", convexity=3);
+            import("../MiniPlan6/MiniPlan5_40.stl", convexity=3);
             
             translate([0, 7, 34]) hull(){
                 
